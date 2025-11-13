@@ -4,7 +4,7 @@ Sensei.ai is a smart career guidance platform that helps students explore career
 
 Sensei.ai – Smart Career & Education Advisor
 
-Sensei.ai is a modern, interactive web application that helps students explore career paths, receive personalized stream recommendations, find government colleges, track exam timelines, and access curated student resources. Built with a clean, responsive UI and smooth user experience.
+Sensei.ai is a modern, interactive web application that helps students explore career paths, receive personalized stream recommendations, find colleges, track exam timelines, and access curated student resources. Built with a clean, responsive UI and smooth user experience.
 
 🚀 Features
 ⭐ Aptitude Test
