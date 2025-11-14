@@ -1,0 +1,293 @@
+/* === Google Fonts Import === */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* === CSS Variables (Theme) === */
+:root {
+    --primary-color: #123C69; /* Google Blue */
+    --primary-dark: #123C69;
+    --accent-color: #34A853; /* Google Green */
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --bg-color: #EFE2BA;
+    --surface-color: #dcc47c;
+    --border-color: #EFE2BA;
+    --shadow-1: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-2: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-hover: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+}
+
+/* === Base & Typography === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* === Main Layout & Header === */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+header {
+    background-color: #EEE2DC;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-link {
+    position: relative;
+    padding: 8px 0;
+    font-weight: 500;
+    transition: color var(--transition-speed) ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform var(--transition-speed) ease-out;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* === Views & Animations === */
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Staggered card animation */
+.animated-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide-in animation for quiz */
+@keyframes slide-in {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.quiz-question-container {
+    animation: slide-in 0.5s ease-in-out;
+}
+
+/* === Cards & Buttons === */
+.card {
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-1);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.custom-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #EEE2DC;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    box-shadow: var(--shadow-1);
+}
+
+.custom-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-2);
+}
+
+/* === Specific View Styles === */
+
+/* Dashboard */
+#dashboard .nav-link {
+    display: block;
+    padding: 1.5rem;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-1);
+    border: 1px solid var(--border-color);
+}
+#dashboard .nav-link::after { display: none; } /* Disable underline for dashboard cards */
+
+/* Quiz */
+#quiz-container {
+    border: 1px solid var(--border-color);
+}
+
+.quiz-option {
+    border: 2px solid var(--border-color) !important;
+    transition: all var(--transition-speed) ease !important;
+}
+
+.quiz-option:hover {
+    background-color: #EEE2DC !important; /* Light Google Blue */
+    border-color: var(--primary-color) !important;
+    transform: scale(1.02);
+}
+
+/* Career Paths */
+#career-path-content .bg-white {
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+#career-path-content .bg-white:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Timeline */
+#timeline-list .relative {
+    border-left-color: var(--primary-color);
+}
+#timeline-list span {
+    background-color: #EEE2DC !important;
+    /* ring-color is not a valid CSS property, so it's removed */
+}
+
+/* About Section on Dashboard */
+.about-section {
+    background: #EEE2DC;
+    border: 1px solid var(--border-color);
+}
+
+/* === START: chatbot styles (append to your style.css) === */
+.chatbot-float-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 22px;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#2563eb,#06b6d4);
+  color: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 8px 22px rgba(15,23,42,0.18);
+  cursor:pointer;
+  z-index: 99999;
+  border: none;
+}
+.chatbot-panel {
+  position: fixed;
+  right: 20px;
+  bottom: 96px;
+  width: 380px;
+  max-width: calc(100% - 40px);
+  height: 540px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(2,6,23,0.3);
+  z-index: 99998;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+.chatbot-header {
+  padding: 12px 14px;
+  background: linear-gradient(90deg,#0ea5a9,#2563eb);
+  color: white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.chatbot-header .title { font-weight:700; font-size:15px; }
+.chatbot-body { padding: 12px; flex: 1; overflow-y: auto; background: #f8fafc; }
+.chatbot-footer { padding: 10px; border-top: 1px solid #eef2f6; background:white; display:flex; gap:8px; }
+.chatbot-input {
+  flex: 1;
+  padding:10px 12px;
+  border-radius:10px;
+  border: 1px solid #e6e9ef;
+  outline:none;
+  font-size:14px;
+}
+.chatbot-send-btn {
+  background:#2563eb;
+  color:white;
+  padding:8px 12px;
+  border-radius:10px;
+  border: none;
+  cursor: pointer;
+}
+.chatbot-msg { margin-bottom: 10px; display:flex; gap:8px; align-items:flex-start; }
+.chatbot-msg .bubble { max-width: 78%; padding:10px 12px; border-radius: 12px; line-height:1.35; }
+.chatbot-msg.user { justify-content:flex-end; }
+.chatbot-msg.user .bubble { background: #2563eb; color:white; border-bottom-right-radius:4px; }
+.chatbot-msg.bot .bubble { background: #fff; color:#0f172a; border: 1px solid #e6e9ef; border-bottom-left-radius:4px; }
+.chatbot-suggestions { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+.chatbot-chip { padding:6px 10px; border-radius:999px; background:#eef2ff; color:#1e3a8a; font-size:13px; cursor:pointer; border:1px solid rgba(37,99,235,0.08); }
+.chatbot-hidden { display:none !important; }
+/* small responsive tweaks */
+@media (max-width:420px) {
+  .chatbot-panel { right: 10px; left: 10px; width: auto; bottom: 88px; height: 68vh; }
+  .chatbot-float-btn { right: 10px; bottom: 16px; }
+}
+/* === END: chatbot styles === */
